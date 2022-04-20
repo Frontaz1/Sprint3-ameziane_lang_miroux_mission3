@@ -165,6 +165,10 @@ form {
     margin-top: 100px;
     text-align: center;
 }
+
+select.ref {
+    width : 30px;
+}
 /* FIN RECHERCHE BIEN PAR TYPE ET VILLE */
 
 /* AFFICHAGE VISU: REF-VILLE-TYPE-PRIX */
