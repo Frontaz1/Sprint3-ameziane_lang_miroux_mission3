@@ -128,7 +128,8 @@ function getImage($ObjConnexion, $id) {
 }
 
 function modifBien ($ObjConnexion, $ref, $descrip, $prix, $surface, $type, $ville, $piece, $jardin) {
-    $update = $ObjConnexion->prepare("UPDATE biens SET descrip= :descrip, prix= :prix, surface= :surface, type= :type, ville= :ville, nbPiece= :piece, jardin= :jardin");
+    $update = $ObjConnexion->prepare("UPDATE biens SET descrip= :descrip, prix= :prix, surface= :surface, type= :type, ville= :ville, nbPiece= :piece, jardin= :jardin WHERE ref= :ref");
+    $bvref = $update->bindValue(':ref', $ref);
     $bvdescrip = $update->bindValue(':descrip', $descrip);
     $bvprix = $update->bindValue(':prix', $prix);
     $bvsurface = $update->bindValue(':surface', $surface);

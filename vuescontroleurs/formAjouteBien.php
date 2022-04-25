@@ -18,7 +18,7 @@ if (isset($_SESSION['role'])) {
 <form name="ajout" id ="ajout" method="post" action="">
     <div id="titreForm">Ajout bien :</div>
     <p>
-        <label for="descrip" title="Veuillez saisir votre email ">Description :</label>
+        <label for="descrip" title="Veuillez saisir la description du bien ">Description :</label>
         <input type="text" name="descrip" id="descrip" title="Veuillez saisir la description du bien " />
     </p>
     <p>
@@ -30,8 +30,18 @@ if (isset($_SESSION['role'])) {
         <input type="text" name="surface" id="surface" title="Veuillez saisir la surface " />
     </p>
     <p>
-        <label for="type" title="Veuillez saisir le type " class="oblig">Type:</label>
-        <input type="password" name="type" id="type" title="Veuillez saisir le type " />
+        <label for="type" title="Veuillez choisir le type " class="oblig">Type:</label>
+        <select class="type" id="type" name ="type" title="Veuillez choisir le type du bien" style="width:200px">
+            <?php
+            include_once '../modeles/mesFonctionsAccesBDD.php';
+            $lePDO = connexionBDD();
+            $lesTypes = getLesTypes($lePDO);
+
+            foreach ($lesTypes as $unType) {
+                echo '<option value="' . $unType['id'] . '">' . $unType['libelle'] . '</option>';
+            }
+            ?>
+        </select>
     </p>
     <p>
         <label for="ville" title="Veuillez saisir la ville " class="oblig">Ville:</label>
@@ -48,10 +58,10 @@ if (isset($_SESSION['role'])) {
         <input type="checkbox" id="jardin" name="jardin" value=1>
         <label for="jardin">Oui</label>
     </div>
-    </p>
-    <div id="piedForm">
-        <input type="submit" name="valid" id="valid" value="Ajouter" />
-    </div>
+</p>
+<div id="piedForm">
+    <input type="submit" name="valid" id="valid" value="Ajouter" />
+</div>
 </form>
 
 <form name="delete" id ="delete" method="post" action="">
@@ -67,7 +77,7 @@ if (isset($_SESSION['role'])) {
 </form>
 
 
-<form name="modif" id ="modif" method="post" action="">
+<form name="modif" id ="modif" method="post" action="../modeles/modificationBien.php">
     <div id="titreForm">Modifier bien :</div>
     <p>
         <label for="ref" title="Veuillez choisir la référence du bien ">Choisissez la référence du bien :</label>
@@ -96,8 +106,17 @@ if (isset($_SESSION['role'])) {
         <input type="text" name="surface" id="surface" title="Veuillez saisir la surface " />
     </p>
     <p>
-        <label for="type" title="Veuillez saisir le type " class="oblig">Type:</label>
-        <input type="password" name="type" id="type" title="Veuillez saisir le type " />
+        <label for="type" title="Veuillez choisir le type " class="oblig">Type:</label>
+        <select class="type" id="type" name ="type" title="Veuillez choisir le type du bien" style="width:200px">
+            <?php
+            include_once '../modeles/mesFonctionsAccesBDD.php';
+            $lesTypes = getLesTypes($lePDO);
+
+            foreach ($lesTypes as $unType) {
+                echo '<option value="' . $unType['id'] . '">' . $unType['libelle'] . '</option>';
+            }
+            ?>
+        </select>
     </p>
     <p>
         <label for="ville" title="Veuillez saisir la ville " class="oblig">Ville:</label>
