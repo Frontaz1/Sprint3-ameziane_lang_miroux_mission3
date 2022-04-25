@@ -15,7 +15,7 @@ if (isset($_SESSION['role'])) {
     echo'<p class="login-status"> You are logged out! </p>';
 }
 ?>
-<form name="ajout" id ="ajout" method="post" action="">
+<form name="ajout" id ="ajout" method="post" action="../modeles/ajoutBien.php">
     <div id="titreForm">Ajout bien :</div>
     <p>
         <label for="descrip" title="Veuillez saisir la description du bien ">Description :</label>
