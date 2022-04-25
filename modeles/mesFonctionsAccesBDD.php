@@ -128,13 +128,13 @@ function getImage($ObjConnexion, $id) {
 }
 
 function ajoutBien($ObjConnexion, $descrip, $prix, $surface, $type, $ville, $piece, $jardin) {
-    $insert = $ObjConnexion->prepare("INSERT INTO biens VALUES (null, :descrip, :prix, :surface, :type, :ville, :nbpiece, :jardin");
+    $insert = $ObjConnexion->prepare("INSERT INTO biens VALUES (null, :descrip, :prix, :surface, :type, :ville, :nbPiece, :jardin)");
     $bvdescrip = $insert->bindValue(':descrip', $descrip, PDO::PARAM_STR);
     $bvprix = $insert->bindValue(':prix', $prix, PDO::PARAM_INT);
     $bvsurface = $insert->bindValue(':surface', $surface, PDO::PARAM_INT);
     $bvtype = $insert->bindValue(':type', $type, PDO::PARAM_INT);
     $bvville = $insert->bindValue(':ville', $ville, PDO::PARAM_STR);
-    $bvpiece = $insert->bindValue(':nbpiece', $piece, PDO::PARAM_INT);
+    $bvpiece = $insert->bindValue(':nbPiece', $piece, PDO::PARAM_INT);
     $bvjardin = $insert->bindValue(':jardin', $jardin, PDO::PARAM_INT);
     $execution = $insert->execute();
     return $execution;
