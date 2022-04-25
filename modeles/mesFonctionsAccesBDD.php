@@ -120,14 +120,27 @@ function affichageUnBien($ObjConnexion, $ref_bien) {
 }
 
 function getImage($ObjConnexion, $id) {
-    $requete = $ObjConnexion ->prepare("select * from image where idBien=:id");
+    $requete = $ObjConnexion->prepare("select * from image where idBien=:id");
     $bv = $requete->bindValue(':id', $id);
     $execution = $requete->execute();
     $resultat = $requete->fetchAll();
     return $resultat;
 }
 
-function modifBien ($ObjConnexion, $ref, $descrip, $prix, $surface, $type, $ville, $piece, $jardin) {
+function ajoutBien($ObjConnexion, $descrip, $prix, $surface, $type, $ville, $piece, $jardin) {
+    $insert = $ObjConnexion->prepare("INSERT INTO biens VALUES (null, :descrip, :prix, :surface, :type, :ville, :nbpiece, :jardin");
+    $bvdescrip = $insert->bindValue(':descrip', $descrip, PDO::PARAM_STR);
+    $bvprix = $insert->bindValue(':prix', $prix, PDO::PARAM_INT);
+    $bvsurface = $insert->bindValue(':surface', $surface, PDO::PARAM_INT);
+    $bvtype = $insert->bindValue(':type', $type, PDO::PARAM_INT);
+    $bvville = $insert->bindValue(':ville', $ville, PDO::PARAM_STR);
+    $bvpiece = $insert->bindValue(':nbpiece', $piece, PDO::PARAM_INT);
+    $bvjardin = $insert->bindValue(':jardin', $jardin, PDO::PARAM_INT);
+    $execution = $insert->execute();
+    return $execution;
+}
+
+function modifBien($ObjConnexion, $ref, $descrip, $prix, $surface, $type, $ville, $piece, $jardin) {
     $update = $ObjConnexion->prepare("UPDATE biens SET descrip= :descrip, prix= :prix, surface= :surface, type= :type, ville= :ville, nbPiece= :piece, jardin= :jardin WHERE ref= :ref");
     $bvref = $update->bindValue(':ref', $ref);
     $bvdescrip = $update->bindValue(':descrip', $descrip);

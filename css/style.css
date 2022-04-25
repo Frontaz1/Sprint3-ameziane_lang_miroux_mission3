@@ -166,6 +166,11 @@ form {
     text-align: center;
 }
 
+input#descrip {
+    width : 300px;
+    height : 150px;
+}
+
 select.ref {
     width : 30px;
 }
