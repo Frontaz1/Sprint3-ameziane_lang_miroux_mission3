@@ -16,6 +16,8 @@ $insert = ajoutBien($lePDO,$description,$prix,$surface, $type, $ville, $nbPiece,
 
 if ($insert == true) {
     echo 'Ajout effectuée !';
+    header("Location: ../vuescontroleurs/formAjouteBien.php");
+    exit();
 } else {
     echo 'Erreur d ajout';
 }

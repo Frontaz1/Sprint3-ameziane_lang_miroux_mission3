@@ -14,24 +14,27 @@ if (isset($_SESSION['role'])) {
 } else {
     echo'<p class="login-status"> You are logged out! </p>';
 }
+
+
+
 ?>
 <form name="ajout" id ="ajout" method="post" action="../modeles/ajoutBien.php">
     <div id="titreForm">Ajout bien :</div>
     <p>
         <label for="descrip" title="Veuillez saisir la description du bien ">Description :</label>
-        <input type="text" name="descrip" id="descrip" title="Veuillez saisir la description du bien " />
+        <input type="text" name="descrip" id="descrip" title="Veuillez saisir la description du bien " required/>
     </p>
     <p>
         <label for="prix" title="Veuillez saisir le prix " class="oblig">Prix:</label>
-        <input type="text" name="prix" id="prix" title="Veuillez saisir le prix " />
+        <input type="number" name="prix" id="prix" title="Veuillez saisir le prix " required />
     </p>
     <p>
         <label for="surface" title="Veuillez saisir la surface " class="oblig">Surface:</label>
-        <input type="text" name="surface" id="surface" title="Veuillez saisir la surface " />
+        <input type="number" name="surface" id="surface" title="Veuillez saisir la surface "  required/>
     </p>
     <p>
         <label for="type" title="Veuillez choisir le type " class="oblig">Type:</label>
-        <select class="type" id="type" name ="type" title="Veuillez choisir le type du bien" style="width:200px">
+        <select class="type" id="type" name ="type" title="Veuillez choisir le type du bien" style="width:200px"  required >
             <?php
             include_once '../modeles/mesFonctionsAccesBDD.php';
             $lePDO = connexionBDD();
@@ -45,15 +48,15 @@ if (isset($_SESSION['role'])) {
     </p>
     <p>
         <label for="ville" title="Veuillez saisir la ville " class="oblig">Ville:</label>
-        <input type="text" name="ville" id="ville" title="Veuillez saisir la ville " />
+        <input type="text" name="ville" id="ville" title="Veuillez saisir la ville "  required />
     </p>
     <p>
         <label for="piece" title="Veuillez saisir le nombre de pièces " class="oblig">nbPiece:</label>
-        <input type="text" name="piece" id="piece" title="Veuillez saisir le nombre de pièces " />
+        <input type="number" name="piece" id="piece" title="Veuillez saisir le nombre de pièces " required />
     </p>
     <p>
     <div>
-        <label for="jardin" title="Veuillew choisir si le bien a une jardin"> Présence d'un jardin: </label>
+        <label for="jardin" title="Veuillez choisir si le bien a une jardin"> Présence d'un jardin: </label>
         <input type="hidden" name="jardin" value="0" />
         <input type="checkbox" id="jardin" name="jardin" value=1>
         <label for="jardin">Oui</label>
@@ -61,8 +64,12 @@ if (isset($_SESSION['role'])) {
 </p>
 <div id="piedForm">
     <input type="submit" name="valid" id="valid" value="Ajouter" />
+    <input type="hidden" name="flag" value="1">
+
+
 </div>
 </form>
+
 
 <form name="delete" id ="delete" method="post" action="">
     <div id="titreForm">Supprimer bien</div>

@@ -9,6 +9,9 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Agence OLJU</title>
         <link rel="stylesheet" href="../css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+        <script src="../autres/pdf.js" defer></script>
     </head>
     <body>
          <header>
